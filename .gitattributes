@@ -1,0 +1,19 @@
+# Normalise to LF in the repository; Windows checkouts still get CRLF.
+* text=auto
+
+*.cs        text diff=csharp
+*.cpp       text
+*.h         text
+*.axaml     text
+*.csproj    text
+*.vcxproj   text
+*.sln       text eol=crlf
+*.ps1       text eol=crlf
+*.rc        text
+*.manifest  text
+*.ini       text
+*.md        text
+
+*.ico       binary
+*.png       binary
+*.exe       binary

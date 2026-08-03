@@ -1,0 +1,49 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+  <!--
+    Palette derived from the Blazma mark: the bolt's violet on the icon's near-black
+    plate. The instrument-bench structure stays; only the accent changes, so the
+    window and the app icon read as the same object.
+  -->
+  <Color x:Key="VoidColor">#121016</Color>
+  <Color x:Key="PanelColor">#191621</Color>
+  <Color x:Key="FieldColor">#0D0B11</Color>
+  <Color x:Key="RuleColor">#2A2536</Color>
+  <Color x:Key="GraphiteColor">#6E6880</Color>
+  <Color x:Key="ChalkColor">#E2DFEA</Color>
+  <Color x:Key="VioletColor">#8B7FE8</Color>
+
+  <SolidColorBrush x:Key="BenchBrush" Color="{StaticResource VoidColor}" />
+  <SolidColorBrush x:Key="PanelBrush" Color="{StaticResource PanelColor}" />
+  <SolidColorBrush x:Key="FieldBrush" Color="{StaticResource FieldColor}" />
+  <SolidColorBrush x:Key="RuleBrush" Color="{StaticResource RuleColor}" />
+  <SolidColorBrush x:Key="GraphiteBrush" Color="{StaticResource GraphiteColor}" />
+  <SolidColorBrush x:Key="ChalkBrush" Color="{StaticResource ChalkColor}" />
+  <SolidColorBrush x:Key="AccentBrush" Color="{StaticResource VioletColor}" />
+  <SolidColorBrush x:Key="AccentDimBrush" Color="#4D8B7FE8" />
+  <SolidColorBrush x:Key="HoverBrush" Color="#242034" />
+
+  <!--
+    Bahnschrift is the DIN-derived technical face that ships with Windows 10/11 -
+    it reads as instrument labelling rather than app chrome, and it covers Cyrillic.
+    Cascadia Mono carries the numeric readouts; Inter is bundled for body copy.
+    Arabic and CJK swap these at runtime - see Strings.cs.
+  -->
+  <FontFamily x:Key="TechFont">Bahnschrift,Segoe UI,sans-serif</FontFamily>
+  <FontFamily x:Key="BodyFont">Inter,Segoe UI,sans-serif</FontFamily>
+  <FontFamily x:Key="MonoFont">Cascadia Mono,Consolas,monospace</FontFamily>
+
+  <!--
+    Recolouring the Fluent accent ramp retints sliders, toggles, combo highlights
+    and focus rings in one place, instead of retemplating each control.
+  -->
+  <Color x:Key="SystemAccentColor">#8B7FE8</Color>
+  <Color x:Key="SystemAccentColorLight1">#A29AEE</Color>
+  <Color x:Key="SystemAccentColorLight2">#BAB4F3</Color>
+  <Color x:Key="SystemAccentColorLight3">#D1CDF8</Color>
+  <Color x:Key="SystemAccentColorDark1">#7469D0</Color>
+  <Color x:Key="SystemAccentColorDark2">#5D53B0</Color>
+  <Color x:Key="SystemAccentColorDark3">#463E8A</Color>
+
+</ResourceDictionary>

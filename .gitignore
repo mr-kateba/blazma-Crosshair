@@ -1,0 +1,19 @@
+# Build output
+dist/
+*.exe
+*.o
+*.obj
+*.pdb
+
+# .NET
+bin/
+obj/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+
+# Local settings written at runtime. config.ini in the repo is the seed used for
+# portable builds; installed builds keep theirs in %APPDATA%\Blazma.
+trace.log

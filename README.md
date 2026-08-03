@@ -137,3 +137,7 @@ wParam  : 0=Reload  1=Show  2=Hide  3=Toggle  4=Exit
 - `WS_EX_TOOLWINDOW` يخفيه من شريط المهام و Alt+Tab.
 - لا يقوم بحقن أي DLL ولا بتعديل ذاكرة الألعاب.
 - **تحذير**: الألعاب في وضع **Fullscreen Exclusive** قد تخفي أي نافذة أخرى — استخدم **Borderless Windowed**.
+
+## الرخصة
+
+[MIT](LICENSE)

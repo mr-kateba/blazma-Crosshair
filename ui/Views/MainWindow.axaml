@@ -4,7 +4,7 @@
         xmlns:vm="using:Blazma.ViewModels"
         x:Class="Blazma.Views.MainWindow"
         x:DataType="vm:MainViewModel"
-        Title="Blazma"
+        Title="Blazma Crosshair"
         Icon="avares://Blazma/Assets/blazma.ico"
         Width="960" Height="740"
         MinWidth="880" MinHeight="600"
@@ -22,8 +22,19 @@
 
       <StackPanel Grid.Column="0" Orientation="Horizontal" Spacing="10"
                   Margin="16,0,0,0" VerticalAlignment="Center">
-        <Border Width="3" Height="13" Background="{StaticResource AccentBrush}" />
-        <TextBlock Classes="wordmark" Text="BLAZMA" VerticalAlignment="Center" />
+        <!-- The Blazma hexagon with the crosshair, as in branding/logo.svg. -->
+        <Viewbox Width="20" Height="20" VerticalAlignment="Center">
+          <Canvas Width="100" Height="100">
+            <Path Fill="{StaticResource LogoBrush}"
+                  Data="M 50,3 L 91,26.5 L 91,73.5 L 50,97 L 9,73.5 L 9,26.5 Z" />
+            <Ellipse Canvas.Left="28" Canvas.Top="28" Width="44" Height="44"
+                     Stroke="White" StrokeThickness="6" />
+            <Path Stroke="White" StrokeThickness="6" StrokeLineCap="Round"
+                  Data="M 50,21 L 50,37 M 50,63 L 50,79 M 21,50 L 37,50 M 63,50 L 79,50" />
+            <Ellipse Canvas.Left="45.5" Canvas.Top="45.5" Width="9" Height="9" Fill="White" />
+          </Canvas>
+        </Viewbox>
+        <TextBlock Classes="wordmark" Text="Blazma Crosshair" VerticalAlignment="Center" />
       </StackPanel>
 
       <StackPanel Grid.Column="2" Orientation="Horizontal">
@@ -80,7 +91,7 @@
           <!-- The instrument surface itself never mirrors; a reticle has no handedness. -->
           <Grid FlowDirection="LeftToRight">
             <c:CalibrationField RuleBrush="{StaticResource RuleBrush}"
-                                HairlineBrush="#242B34" />
+                                HairlineBrush="#24242C" />
             <c:CrosshairPreview Type="{Binding Type}"
                                 Color="{Binding Color}"
                                 Size="{Binding Size}"

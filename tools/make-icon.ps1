@@ -1,10 +1,13 @@
-# Generates the Blazma app icon (rounded square + lightning bolt) as a multi-size .ico.
+# Generates the Blazma app icon as a multi-size .ico: the Blazma family hexagon
+# (same as Blazma Boost / Blazma Get / Blazma Cyber) with a white crosshair.
+# The source of truth is branding/logo.svg; this draws the same shapes in its 100x100 grid.
 param([string]$OutDir)
 
 Add-Type -AssemblyName System.Drawing
 
-$bg   = [System.Drawing.Color]::FromArgb(255, 0x15, 0x13, 0x1A)
-$bolt = [System.Drawing.Color]::FromArgb(255, 0x8B, 0x7F, 0xE8)
+$top    = [System.Drawing.Color]::FromArgb(255, 0xFF, 0xB3, 0x00)
+$bottom = [System.Drawing.Color]::FromArgb(255, 0xFF, 0x3D, 0x00)
+$white  = [System.Drawing.Color]::White
 
 function New-IconBitmap([int]$px) {
     $bmp = New-Object System.Drawing.Bitmap($px, $px, [System.Drawing.Imaging.PixelFormat]::Format32bppArgb)
@@ -13,34 +16,31 @@ function New-IconBitmap([int]$px) {
     $g.InterpolationMode = [System.Drawing.Drawing2D.InterpolationMode]::HighQualityBicubic
     $g.Clear([System.Drawing.Color]::Transparent)
 
-    $s = $px / 1024.0
+    $s = $px / 100.0
 
-    # Rounded square backdrop.
-    $r = 232.0 * $s
-    $w = 1024.0 * $s
-    $path = New-Object System.Drawing.Drawing2D.GraphicsPath
-    $d = $r * 2
-    $path.AddArc(0, 0, $d, $d, 180, 90)
-    $path.AddArc($w - $d, 0, $d, $d, 270, 90)
-    $path.AddArc($w - $d, $w - $d, $d, $d, 0, 90)
-    $path.AddArc(0, $w - $d, $d, $d, 90, 90)
-    $path.CloseFigure()
-    $brushBg = New-Object System.Drawing.SolidBrush($bg)
-    $g.FillPath($brushBg, $path)
-
-    # Lightning bolt.
-    $pts = @(
-        @(602, 186), @(352, 540), @(500, 540),
-        @(424, 832), @(672, 478), @(520, 478)
-    )
+    # Hexagon with the Blazma amber-to-orange gradient.
+    $hex = @(@(50, 3), @(91, 26.5), @(91, 73.5), @(50, 97), @(9, 73.5), @(9, 26.5))
     $poly = @()
-    foreach ($p in $pts) {
+    foreach ($p in $hex) {
         $poly += New-Object System.Drawing.PointF(($p[0] * $s), ($p[1] * $s))
     }
-    $brushBolt = New-Object System.Drawing.SolidBrush($bolt)
-    $g.FillPolygon($brushBolt, [System.Drawing.PointF[]]$poly)
+    $rect = New-Object System.Drawing.RectangleF(0, 0, $px, $px)
+    $grad = New-Object System.Drawing.Drawing2D.LinearGradientBrush($rect, $top, $bottom, 90.0)
+    $g.FillPolygon($grad, [System.Drawing.PointF[]]$poly)
 
-    $brushBg.Dispose(); $brushBolt.Dispose(); $path.Dispose(); $g.Dispose()
+    # Crosshair: ring, four arms and a centre dot.
+    $pen = New-Object System.Drawing.Pen($white, (6.0 * $s))
+    $pen.StartCap = [System.Drawing.Drawing2D.LineCap]::Round
+    $pen.EndCap = [System.Drawing.Drawing2D.LineCap]::Round
+    $g.DrawEllipse($pen, (31 * $s), (31 * $s), (38 * $s), (38 * $s))
+    $g.DrawLine($pen, (50 * $s), (21 * $s), (50 * $s), (37 * $s))
+    $g.DrawLine($pen, (50 * $s), (63 * $s), (50 * $s), (79 * $s))
+    $g.DrawLine($pen, (21 * $s), (50 * $s), (37 * $s), (50 * $s))
+    $g.DrawLine($pen, (63 * $s), (50 * $s), (79 * $s), (50 * $s))
+    $brushWhite = New-Object System.Drawing.SolidBrush($white)
+    $g.FillEllipse($brushWhite, (45.5 * $s), (45.5 * $s), (9 * $s), (9 * $s))
+
+    $grad.Dispose(); $pen.Dispose(); $brushWhite.Dispose(); $g.Dispose()
     return $bmp
 }
 

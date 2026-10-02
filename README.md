@@ -17,6 +17,8 @@ Blazma/
 ├── build-mingw.ps1              يبني محرك الرسم وحده
 ├── config.ini                   إعدادات البداية (تُنسخ للوضع المحمول)
 ├── Blazma.sln / Blazma.vcxproj  مشروع Visual Studio لمحرك الرسم
+├── branding/
+│   └── logo.svg                 شعار Blazma (السداسي البرتقالي مع علامة التصويب)
 ├── assets/
 │   └── blazma.ico               أيقونة التطبيق (تُدمج في الملفين)
 │

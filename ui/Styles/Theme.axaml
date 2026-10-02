@@ -7,7 +7,7 @@
     <Setter Property="FontSize" Value="11" />
     <Setter Property="FontWeight" Value="SemiBold" />
     <Setter Property="LetterSpacing" Value="1.8" />
-    <Setter Property="Foreground" Value="{StaticResource GraphiteBrush}" />
+    <Setter Property="Foreground" Value="{StaticResource AccentTextBrush}" />
   </Style>
 
   <Style Selector="TextBlock.label">
@@ -21,7 +21,7 @@
   <Style Selector="TextBlock.readout">
     <Setter Property="FontFamily" Value="{DynamicResource MonoFont}" />
     <Setter Property="FontSize" Value="12" />
-    <Setter Property="Foreground" Value="{StaticResource AccentBrush}" />
+    <Setter Property="Foreground" Value="{StaticResource AccentTextBrush}" />
     <Setter Property="VerticalAlignment" Value="Center" />
     <Setter Property="HorizontalAlignment" Value="Right" />
   </Style>
@@ -33,18 +33,17 @@
   </Style>
 
   <Style Selector="TextBlock.wordmark">
-    <Setter Property="FontFamily" Value="{DynamicResource TechFont}" />
-    <Setter Property="FontSize" Value="13" />
+    <Setter Property="FontFamily" Value="{DynamicResource BodyFont}" />
+    <Setter Property="FontSize" Value="14" />
     <Setter Property="FontWeight" Value="Bold" />
-    <Setter Property="LetterSpacing" Value="3" />
-    <Setter Property="Foreground" Value="{StaticResource ChalkBrush}" />
+    <Setter Property="Foreground" Value="{StaticResource AccentTextBrush}" />
   </Style>
 
   <Style Selector="Border.panel">
     <Setter Property="Background" Value="{StaticResource PanelBrush}" />
     <Setter Property="BorderBrush" Value="{StaticResource RuleBrush}" />
     <Setter Property="BorderThickness" Value="1" />
-    <Setter Property="CornerRadius" Value="3" />
+    <Setter Property="CornerRadius" Value="10" />
   </Style>
 
   <Style Selector="Border.rule">
@@ -52,17 +51,21 @@
     <Setter Property="Height" Value="1" />
   </Style>
 
-  <!-- Preset chip. The accent arrives only on hover, so the resting state stays quiet. -->
-  <Style Selector="Button.preset">
-    <Setter Property="Background" Value="Transparent" />
-    <Setter Property="BorderBrush" Value="{StaticResource RuleBrush}" />
+  <!--
+    Blazma Boost's key: dark fill with a thin light outline, a lighter fill under the
+    mouse, solid orange with a light rim while pressed or selected. Preset, ghost, zoom
+    and language buttons all share it so every button in the window reads as a key.
+  -->
+  <Style Selector="Button.preset, Button.ghost, ToggleButton.zoom, ToggleButton.lang">
+    <Setter Property="Background" Value="{StaticResource PanelBrush}" />
+    <Setter Property="BorderBrush" Value="{StaticResource KeyOutlineBrush}" />
     <Setter Property="BorderThickness" Value="1" />
-    <Setter Property="CornerRadius" Value="2" />
-    <Setter Property="Padding" Value="12,7" />
+    <Setter Property="CornerRadius" Value="6" />
     <Setter Property="FontFamily" Value="{DynamicResource BodyFont}" />
     <Setter Property="FontSize" Value="12" />
     <Setter Property="Foreground" Value="{StaticResource ChalkBrush}" />
     <Setter Property="HorizontalContentAlignment" Value="Center" />
+    <Setter Property="Cursor" Value="Hand" />
     <Setter Property="Transitions">
       <Transitions>
         <BrushTransition Property="Background" Duration="0:0:0.14" />
@@ -71,47 +74,60 @@
     </Setter>
   </Style>
 
-  <Style Selector="Button.preset:pointerover /template/ ContentPresenter">
+  <Style Selector="Button.preset:pointerover /template/ ContentPresenter, Button.ghost:pointerover /template/ ContentPresenter, ToggleButton.zoom:pointerover /template/ ContentPresenter, ToggleButton.lang:pointerover /template/ ContentPresenter">
     <Setter Property="Background" Value="{StaticResource HoverBrush}" />
-    <Setter Property="BorderBrush" Value="{StaticResource AccentBrush}" />
-    <Setter Property="TextElement.Foreground" Value="{StaticResource AccentBrush}" />
+    <Setter Property="BorderBrush" Value="{StaticResource KeyOutlineBrush}" />
+    <Setter Property="TextElement.Foreground" Value="{StaticResource ChalkBrush}" />
   </Style>
 
-  <Style Selector="Button.preset:pressed /template/ ContentPresenter">
-    <Setter Property="Background" Value="{StaticResource AccentDimBrush}" />
-  </Style>
-
-  <!-- Primary action. The only filled accent surface in the window. -->
-  <Style Selector="Button.primary">
+  <Style Selector="Button.preset:pressed /template/ ContentPresenter, Button.ghost:pressed /template/ ContentPresenter, ToggleButton.zoom:pressed /template/ ContentPresenter, ToggleButton.lang:pressed /template/ ContentPresenter, ToggleButton.zoom:checked /template/ ContentPresenter, ToggleButton.lang:checked /template/ ContentPresenter">
     <Setter Property="Background" Value="{StaticResource AccentBrush}" />
-    <Setter Property="Foreground" Value="#121016" />
-    <Setter Property="BorderThickness" Value="0" />
-    <Setter Property="CornerRadius" Value="2" />
-    <Setter Property="Padding" Value="16,9" />
-    <Setter Property="FontFamily" Value="{DynamicResource BodyFont}" />
-    <Setter Property="FontSize" Value="12" />
-    <Setter Property="FontWeight" Value="SemiBold" />
+    <Setter Property="BorderBrush" Value="{StaticResource AccentRimBrush}" />
+    <Setter Property="TextElement.Foreground" Value="{StaticResource OnAccentBrush}" />
   </Style>
 
-  <Style Selector="Button.primary:pointerover /template/ ContentPresenter">
-    <Setter Property="Background" Value="#A29AEE" />
-    <Setter Property="TextElement.Foreground" Value="#121016" />
+  <Style Selector="Button.preset">
+    <Setter Property="Padding" Value="12,7" />
   </Style>
 
   <Style Selector="Button.ghost">
-    <Setter Property="Background" Value="Transparent" />
-    <Setter Property="BorderBrush" Value="{StaticResource RuleBrush}" />
-    <Setter Property="BorderThickness" Value="1" />
-    <Setter Property="CornerRadius" Value="2" />
+    <Setter Property="Padding" Value="16,9" />
+  </Style>
+
+  <Style Selector="ToggleButton.zoom">
+    <Setter Property="Padding" Value="10,4" />
+    <Setter Property="MinWidth" Value="0" />
+    <Setter Property="FontFamily" Value="{DynamicResource MonoFont}" />
+    <Setter Property="FontSize" Value="11" />
+  </Style>
+
+  <!-- Language keys carry Arabic and CJK text, so they keep the body face. -->
+  <Style Selector="ToggleButton.lang">
+    <Setter Property="Padding" Value="11,4" />
+    <Setter Property="MinWidth" Value="0" />
+  </Style>
+
+  <!-- Primary action: the solid orange button of the Blazma apps. -->
+  <Style Selector="Button.primary">
+    <Setter Property="Background" Value="{StaticResource AccentBrush}" />
+    <Setter Property="Foreground" Value="{StaticResource OnAccentBrush}" />
+    <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="CornerRadius" Value="6" />
     <Setter Property="Padding" Value="16,9" />
     <Setter Property="FontFamily" Value="{DynamicResource BodyFont}" />
     <Setter Property="FontSize" Value="12" />
-    <Setter Property="Foreground" Value="{StaticResource ChalkBrush}" />
+    <Setter Property="FontWeight" Value="Bold" />
+    <Setter Property="Cursor" Value="Hand" />
   </Style>
 
-  <Style Selector="Button.ghost:pointerover /template/ ContentPresenter">
-    <Setter Property="Background" Value="{StaticResource HoverBrush}" />
-    <Setter Property="BorderBrush" Value="{StaticResource GraphiteBrush}" />
+  <Style Selector="Button.primary:pointerover /template/ ContentPresenter">
+    <Setter Property="Background" Value="{StaticResource AccentHoverBrush}" />
+    <Setter Property="TextElement.Foreground" Value="{StaticResource OnAccentBrush}" />
+  </Style>
+
+  <Style Selector="Button.primary:pressed /template/ ContentPresenter">
+    <Setter Property="Background" Value="{StaticResource AccentPressedBrush}" />
+    <Setter Property="TextElement.Foreground" Value="{StaticResource OnAccentBrush}" />
   </Style>
 
   <!-- Window chrome buttons. -->
@@ -134,7 +150,7 @@
   </Style>
 
   <Style Selector="Button.close:pointerover /template/ ContentPresenter">
-    <Setter Property="Background" Value="#C42B1C" />
+    <Setter Property="Background" Value="#D13438" />
     <Setter Property="TextElement.Foreground" Value="#FFFFFF" />
   </Style>
 
@@ -144,8 +160,8 @@
     <Setter Property="Height" Value="26" />
     <Setter Property="Padding" Value="0" />
     <Setter Property="BorderThickness" Value="1" />
-    <Setter Property="BorderBrush" Value="{StaticResource RuleBrush}" />
-    <Setter Property="CornerRadius" Value="2" />
+    <Setter Property="BorderBrush" Value="{StaticResource KeyOutlineBrush}" />
+    <Setter Property="CornerRadius" Value="6" />
     <Setter Property="RenderTransform" Value="scale(1)" />
     <Setter Property="Transitions">
       <Transitions>
@@ -158,58 +174,12 @@
     <Setter Property="RenderTransform" Value="scale(1.15)" />
   </Style>
 
-  <!-- Zoom selector chips. -->
-  <Style Selector="ToggleButton.zoom">
-    <Setter Property="Background" Value="Transparent" />
-    <Setter Property="BorderBrush" Value="{StaticResource RuleBrush}" />
-    <Setter Property="BorderThickness" Value="1" />
-    <Setter Property="CornerRadius" Value="2" />
-    <Setter Property="Padding" Value="10,4" />
-    <Setter Property="MinWidth" Value="0" />
-    <Setter Property="FontFamily" Value="{DynamicResource MonoFont}" />
-    <Setter Property="FontSize" Value="11" />
-    <Setter Property="Foreground" Value="{StaticResource GraphiteBrush}" />
-  </Style>
-
-  <!-- Language chips carry Arabic and CJK text, so they use the body face. -->
-  <Style Selector="ToggleButton.lang">
-    <Setter Property="Background" Value="Transparent" />
-    <Setter Property="BorderBrush" Value="{StaticResource RuleBrush}" />
-    <Setter Property="BorderThickness" Value="1" />
-    <Setter Property="CornerRadius" Value="2" />
-    <Setter Property="Padding" Value="11,4" />
-    <Setter Property="MinWidth" Value="0" />
-    <Setter Property="FontFamily" Value="{DynamicResource BodyFont}" />
-    <Setter Property="FontSize" Value="12" />
-    <Setter Property="Foreground" Value="{StaticResource GraphiteBrush}" />
-  </Style>
-
-  <Style Selector="ToggleButton.lang:checked /template/ ContentPresenter">
-    <Setter Property="Background" Value="Transparent" />
-    <Setter Property="BorderBrush" Value="{StaticResource AccentBrush}" />
-    <Setter Property="TextElement.Foreground" Value="{StaticResource AccentBrush}" />
-  </Style>
-
-  <Style Selector="ToggleButton.lang:pointerover /template/ ContentPresenter">
-    <Setter Property="Background" Value="{StaticResource HoverBrush}" />
-  </Style>
-
-  <Style Selector="ToggleButton.zoom:checked /template/ ContentPresenter">
-    <Setter Property="Background" Value="Transparent" />
-    <Setter Property="BorderBrush" Value="{StaticResource AccentBrush}" />
-    <Setter Property="TextElement.Foreground" Value="{StaticResource AccentBrush}" />
-  </Style>
-
-  <Style Selector="ToggleButton.zoom:pointerover /template/ ContentPresenter">
-    <Setter Property="Background" Value="{StaticResource HoverBrush}" />
-  </Style>
-
   <Style Selector="ComboBox">
     <Setter Property="FontFamily" Value="{DynamicResource BodyFont}" />
     <Setter Property="FontSize" Value="12" />
-    <Setter Property="CornerRadius" Value="2" />
-    <Setter Property="Background" Value="{StaticResource FieldBrush}" />
-    <Setter Property="BorderBrush" Value="{StaticResource RuleBrush}" />
+    <Setter Property="CornerRadius" Value="6" />
+    <Setter Property="Background" Value="{StaticResource PanelBrush}" />
+    <Setter Property="BorderBrush" Value="{StaticResource KeyOutlineBrush}" />
   </Style>
 
   <Style Selector="Slider">

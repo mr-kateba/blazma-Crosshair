@@ -1,13 +1,39 @@
-# Blazma
+<div dir="rtl">
 
-<img src="assets/blazma-preview.png" width="96" align="right" alt="Blazma" />
+<p align="center">
+  <img src="branding/logo.svg" width="130" alt="شعار Blazma Crosshair">
+</p>
 
-تطبيق Crosshair Overlay خفيف لـ Windows 10 و Windows 11، مبني من جزأين:
+<h1 align="center">Blazma Crosshair 🎯</h1>
 
-- **محرك الرسم** (C++ / Win32 + GDI+) — نافذة شفافة دائمًا في المقدمة، تمرّ منها نقرات الماوس.
-- **واجهة الإعدادات** (C# / Avalonia UI) — واجهة داكنة حديثة مع معاينة حية، بأربع لغات.
+<p align="center">
+  علامة تصويب (Crosshair) خفيفة فوق أي لعبة على Windows 10 و 11، بواجهة عربية ومعاينة حية.
+</p>
 
-الجزءان يتشاركان ملف `config.ini` فقط، فيبقى محرك الرسم خفيفًا ومستقلاً تمامًا.
+<p align="center">
+  <a href="https://github.com/mr-kateba/blazma-Crosshair/releases/latest"><img src="https://img.shields.io/github/v/release/mr-kateba/blazma-Crosshair?label=%D8%A7%D9%84%D8%A5%D8%B5%D8%AF%D8%A7%D8%B1&color=FF6D00" alt="الإصدار"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/github/license/mr-kateba/blazma-Crosshair?label=%D8%A7%D9%84%D8%AA%D8%B1%D8%AE%D9%8A%D8%B5" alt="الترخيص"></a>
+  <a href="https://github.com/mr-kateba/blazma-Crosshair/releases"><img src="https://img.shields.io/github/downloads/mr-kateba/blazma-Crosshair/total?color=FFB300&label=%D8%A7%D9%84%D8%AA%D8%AD%D9%85%D9%8A%D9%84%D8%A7%D8%AA" alt="التحميلات"></a>
+</p>
+
+---
+
+## ✨ المميزات
+
+- 🎨 **تصميم بلازما**: نفس شكل Blazma Boost و Blazma Get، ألوان برتقالية وأزرار بإطار
+- 🎯 **خمسة أشكال**: صليب، نقطة، دائرة، صليب مع نقطة، دائرة مع نقطة، مع تحكم بالحجم والسمك والفراغ والشفافية
+- 👁️ **معاينة حية بدقة البكسل** مع تكبير 1x و 2x و 4x، وكل تعديل يطبّق فورًا على اللعبة
+- ⚡ **ستة أنماط جاهزة**: Classic و Precision و Micro Dot و Ring و Sniper و Neon
+- 🇸🇦 **أربع لغات**: العربية (من اليمين لليسار) والإنجليزية والروسية والصينية، تتبدل بدون إعادة تشغيل
+- 🖥️ **يدعم الشاشات المتعددة والتكبير (DPI)** ويتوسط على الشاشة اللي فيها الماوس
+- 🛡️ **آمن مع الألعاب**: لا يحقن أي DLL ولا يلمس ذاكرة اللعبة، ونقرات الماوس تمر من خلاله
+- 🪶 **خفيف**: محرك الرسم حوالي 1.4 ميجا وبدون أي اعتماديات
+
+## 🚀 طريقة التشغيل
+
+1. نزّل آخر إصدار من [**صفحة الإصدارات**](https://github.com/mr-kateba/blazma-Crosshair/releases/latest)
+2. شغّل `Blazma.exe` (لو طلع لك "Windows protected your PC" اضغط **More info** ← **Run anyway**)
+3. اختر الشكل واللون، ثم اضغط **تشغيل الطبقة** لإظهار الـ Crosshair فوق اللعبة
 
 ## هيكل المشروع
 
@@ -17,6 +43,8 @@ Blazma/
 ├── build-mingw.ps1              يبني محرك الرسم وحده
 ├── config.ini                   إعدادات البداية (تُنسخ للوضع المحمول)
 ├── Blazma.sln / Blazma.vcxproj  مشروع Visual Studio لمحرك الرسم
+├── branding/
+│   └── logo.svg                 شعار Blazma (السداسي البرتقالي مع علامة التصويب)
 ├── assets/
 │   └── blazma.ico               أيقونة التطبيق (تُدمج في الملفين)
 │
@@ -141,3 +169,5 @@ wParam  : 0=Reload  1=Show  2=Hide  3=Toggle  4=Exit
 ## الرخصة
 
 [MIT](LICENSE)
+
+</div>

@@ -2,17 +2,17 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
   <!--
-    Palette derived from the Blazma mark: the bolt's violet on the icon's near-black
-    plate. The instrument-bench structure stays; only the accent changes, so the
-    window and the app icon read as the same object.
+    The Blazma design tokens, shared with Blazma Boost, Blazma Get and Blazma Cyber:
+    near-black background, raised panels, soft borders, muted secondary text and the
+    Blazma orange - the same orange as the hexagon in the app icon.
   -->
-  <Color x:Key="VoidColor">#121016</Color>
-  <Color x:Key="PanelColor">#191621</Color>
-  <Color x:Key="FieldColor">#0D0B11</Color>
-  <Color x:Key="RuleColor">#2A2536</Color>
-  <Color x:Key="GraphiteColor">#6E6880</Color>
-  <Color x:Key="ChalkColor">#E2DFEA</Color>
-  <Color x:Key="VioletColor">#8B7FE8</Color>
+  <Color x:Key="VoidColor">#121216</Color>
+  <Color x:Key="PanelColor">#1C1C22</Color>
+  <Color x:Key="FieldColor">#0D0D10</Color>
+  <Color x:Key="RuleColor">#2A2A33</Color>
+  <Color x:Key="GraphiteColor">#A0A0AB</Color>
+  <Color x:Key="ChalkColor">#F2F2F5</Color>
+  <Color x:Key="OrangeColor">#FF6D00</Color>
 
   <SolidColorBrush x:Key="BenchBrush" Color="{StaticResource VoidColor}" />
   <SolidColorBrush x:Key="PanelBrush" Color="{StaticResource PanelColor}" />
@@ -20,9 +20,24 @@
   <SolidColorBrush x:Key="RuleBrush" Color="{StaticResource RuleColor}" />
   <SolidColorBrush x:Key="GraphiteBrush" Color="{StaticResource GraphiteColor}" />
   <SolidColorBrush x:Key="ChalkBrush" Color="{StaticResource ChalkColor}" />
-  <SolidColorBrush x:Key="AccentBrush" Color="{StaticResource VioletColor}" />
-  <SolidColorBrush x:Key="AccentDimBrush" Color="#4D8B7FE8" />
-  <SolidColorBrush x:Key="HoverBrush" Color="#242034" />
+  <SolidColorBrush x:Key="AccentBrush" Color="{StaticResource OrangeColor}" />
+  <!-- Orange for text and titles, a touch lighter so it reads on the dark background. -->
+  <SolidColorBrush x:Key="AccentTextBrush" Color="#FF8A1F" />
+  <SolidColorBrush x:Key="AccentHoverBrush" Color="#FF8A1F" />
+  <SolidColorBrush x:Key="AccentPressedBrush" Color="#E65100" />
+  <!-- Rim around a selected (orange) key. -->
+  <SolidColorBrush x:Key="AccentRimBrush" Color="#FFB066" />
+  <!-- Text and glyphs drawn on an orange fill. -->
+  <SolidColorBrush x:Key="OnAccentBrush" Color="#F7F7F7" />
+  <!-- Blazma Boost's buttons: dark fill, light outline, lighter fill under the mouse. -->
+  <SolidColorBrush x:Key="KeyOutlineBrush" Color="#C8C8CE" />
+  <SolidColorBrush x:Key="HoverBrush" Color="#2E2E38" />
+
+  <!-- The Blazma hexagon: amber at the top to deep orange at the bottom. -->
+  <LinearGradientBrush x:Key="LogoBrush" StartPoint="50%,0%" EndPoint="50%,100%">
+    <GradientStop Offset="0" Color="#FFB300" />
+    <GradientStop Offset="1" Color="#FF3D00" />
+  </LinearGradientBrush>
 
   <!--
     Bahnschrift is the DIN-derived technical face that ships with Windows 10/11 -
@@ -38,12 +53,12 @@
     Recolouring the Fluent accent ramp retints sliders, toggles, combo highlights
     and focus rings in one place, instead of retemplating each control.
   -->
-  <Color x:Key="SystemAccentColor">#8B7FE8</Color>
-  <Color x:Key="SystemAccentColorLight1">#A29AEE</Color>
-  <Color x:Key="SystemAccentColorLight2">#BAB4F3</Color>
-  <Color x:Key="SystemAccentColorLight3">#D1CDF8</Color>
-  <Color x:Key="SystemAccentColorDark1">#7469D0</Color>
-  <Color x:Key="SystemAccentColorDark2">#5D53B0</Color>
-  <Color x:Key="SystemAccentColorDark3">#463E8A</Color>
+  <Color x:Key="SystemAccentColor">#FF6D00</Color>
+  <Color x:Key="SystemAccentColorLight1">#FF8A1F</Color>
+  <Color x:Key="SystemAccentColorLight2">#FFA54D</Color>
+  <Color x:Key="SystemAccentColorLight3">#FFB066</Color>
+  <Color x:Key="SystemAccentColorDark1">#E65100</Color>
+  <Color x:Key="SystemAccentColorDark2">#C24400</Color>
+  <Color x:Key="SystemAccentColorDark3">#9E3700</Color>
 
 </ResourceDictionary>
